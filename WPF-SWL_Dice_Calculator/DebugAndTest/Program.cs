@@ -65,7 +65,7 @@ namespace DebugAndTest
         #region RollTests
         static private void TestRolls()
         {
-            Console.WriteLine("\r\n" + "Test dice rolls".PadCenter(30, '-') + "\r\n");
+            Console.WriteLine("\r\n" + "Test dice rolls".PadCenter(100, '-') + "\r\n");
 
             foreach (Type type in _lstDiceTypes)
             {
