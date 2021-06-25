@@ -1,12 +1,103 @@
-﻿<Window x:Class="WPF_SWL_Dice_Calculator.MainWindow"
+﻿<Window x:Name="winMainWindow" x:Class="WPF_SWL_Dice_Calculator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_SWL_Dice_Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Legion Dice Calculator" Height="450" Width="800" ContentRendered="winMainWindow_ContentRendered" SizeChanged="winMainWindow_SizeChanged">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="AttackPoolBrush" Color="#FFF52311"/>
+
+        <SolidColorBrush x:Key="DefensePoolBrush" Color="#FF2A88F5"/>
+
+        <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
+
+        <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
+
+        <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#FFA3A3A3" />
+
+        <SolidColorBrush x:Key="EnabledForegroundBrush" Color="White" />
+    </Window.Resources>
+
+    <Grid x:Name="grdMain" Background="{DynamicResource AttackPoolBrush}">
+        <TabControl x:Name="tabsViews" BorderBrush="{x:Null}" Background="{x:Null}" Margin="-5,-4,-5,0" SelectionChanged="tabsViews_SelectionChanged">
+            <TabItem x:Name="tabAttackPool" Header="Attack Pool" Height="40" BorderBrush="{x:Null}" FontSize="16" FontFamily="Arial Black" Background="{DynamicResource AttackPoolBrush}" >
+                <TabItem.Template>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border 
+                                Name="Border"
+                                Margin="0,0,0,0" 
+                                Background="{StaticResource AttackPoolBrush}"
+                                BorderBrush="{StaticResource  AttackPoolBrush}" 
+                                BorderThickness="0,0,0,0" 
+                                CornerRadius="0,0,0,0" >
+                                <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="12,2,12,2"
+                                    RecognizesAccessKey="True"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
+                                <Setter Property="Foreground" Value="{StaticResource EnabledForegroundBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource AttackPoolBrush}" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource AttackPoolBrush}" />
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TabItem.Template>
+                <Grid x:Name="grdAttackPool">
+                    <Frame x:Name="frmAttack" Content="Attack" NavigationUIVisibility="Hidden"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabDefensePool" Header="Defense Pool" Height="40" BorderBrush="{x:Null}" FontFamily="Arial Black" FontSize="16" Background="{DynamicResource DefensePoolBrush}" >
+                <TabItem.Template>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border 
+                                Name="Border"
+                                Margin="0,0,0,0" 
+                                Background="{StaticResource DefensePoolBrush}"
+                                BorderBrush="{StaticResource  DefensePoolBrush}" 
+                                BorderThickness="0,0,0,0" 
+                                CornerRadius="0,0,0,0" >
+                                <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="12,2,12,2"
+                                    RecognizesAccessKey="True"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
+                                <Setter Property="Foreground" Value="{StaticResource EnabledForegroundBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource DefensePoolBrush}" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DefensePoolBrush}" />
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TabItem.Template>
+                <Grid x:Name="grdDefensePool">
+                    <Frame x:Name="frmDefense" Content="Defense" NavigationUIVisibility="Hidden"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

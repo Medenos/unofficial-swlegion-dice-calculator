@@ -7,7 +7,21 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\pgAttackPool.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\pgDefensePool.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\frmMainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\pgAttackPool.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\pgDefensePool.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
