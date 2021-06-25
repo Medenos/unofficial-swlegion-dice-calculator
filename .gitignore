@@ -3,3 +3,9 @@
 ################################################################################
 
 /WPF-SWL_Dice_Calculator/LIB_SWL_Dice_Calculator/obj
+/WPF-SWL_Dice_Calculator/.vs/WPF-SWL_Dice_Calculator/v16
+/WPF-SWL_Dice_Calculator/WPF-SWL_Dice_Calculator/obj
+/WPF-SWL_Dice_Calculator/DebugAndTest/obj
+/WPF-SWL_Dice_Calculator/DebugAndTest/bin/Debug/net5.0
+/WPF-SWL_Dice_Calculator/LIB_SWL_Dice_Calculator/bin/Debug/net5.0
+/WPF-SWL_Dice_Calculator/WPF-SWL_Dice_Calculator/bin/Debug/net5.0-windows
