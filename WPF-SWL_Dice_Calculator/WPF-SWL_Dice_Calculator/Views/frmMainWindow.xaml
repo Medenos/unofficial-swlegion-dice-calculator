@@ -5,24 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_SWL_Dice_Calculator"
         mc:Ignorable="d"
-        Title="Legion Dice Calculator" Height="450" Width="800" ContentRendered="winMainWindow_ContentRendered" SizeChanged="winMainWindow_SizeChanged">
+        Title="Legion Dice Calculator" Height="450" Width="800" ContentRendered="winMainWindow_ContentRendered" SizeChanged="winMainWindow_SizeChanged" Icon="/Images/Critical_hit.png">
 
     <Window.Resources>
-        <SolidColorBrush x:Key="AttackPoolBrush" Color="#FFF52311"/>
-
-        <SolidColorBrush x:Key="DefensePoolBrush" Color="#FF2A88F5"/>
-
-        <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
-
-        <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
-
-        <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#FFA3A3A3" />
-
-        <SolidColorBrush x:Key="EnabledForegroundBrush" Color="White" />
+        <ResourceDictionary Source="../Themes/BasicTheme.xaml"/>
     </Window.Resources>
 
     <Grid x:Name="grdMain" Background="{DynamicResource AttackPoolBrush}">
-        <TabControl x:Name="tabsViews" BorderBrush="{x:Null}" Background="{x:Null}" SelectionChanged="tabsViews_SelectionChanged" Margin="-2,-2,-2,0">
+        <TabControl x:Name="tabsViews" BorderBrush="{x:Null}" SelectionChanged="tabsViews_SelectionChanged" Margin="-2,-2,-2,-2" Background="{DynamicResource AttackPoolGradient}">
             <TabItem x:Name="tabAttackPool" Header="Attack Pool" Height="40" BorderBrush="{x:Null}" FontSize="16" FontFamily="Arial Black" Background="{DynamicResource AttackPoolBrush}" >
                 <TabItem.Template>
                     <ControlTemplate TargetType="{x:Type TabItem}">
@@ -95,6 +85,43 @@
                 </TabItem.Template>
                 <Grid x:Name="grdDefensePool">
                     <Frame x:Name="frmDefense" Content="Defense" NavigationUIVisibility="Hidden"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabOptions" Header="Options" Height="40" BorderBrush="{x:Null}" FontSize="16" FontFamily="Arial Black" Background="{DynamicResource AttackPoolBrush}" >
+                <TabItem.Template>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border 
+                                Name="Border"
+                                Margin="0,0,0,0" 
+                                Background="{StaticResource OptionsBrush}"
+                                BorderBrush="{StaticResource  OptionsBrush}" 
+                                BorderThickness="0,0,0,0" 
+                                CornerRadius="0,0,0,0" >
+                                <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="12,2,12,2"
+                                    RecognizesAccessKey="True"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
+                                <Setter Property="Foreground" Value="{StaticResource EnabledForegroundBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource OptionsBrush}" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource OptionsBrush}" />
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TabItem.Template>
+                <Grid x:Name="grdOptions">
+                    <Frame x:Name="frmOptions" Content="Options" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </TabItem>
         </TabControl>

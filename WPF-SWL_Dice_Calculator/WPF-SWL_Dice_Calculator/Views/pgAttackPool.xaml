@@ -8,7 +8,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="pgAttackPool">
 
-    <Grid x:Name="grdMain" Margin="10,10,10,10" Background="White">
-        <Label x:Name="lblTest" Content="Attack Page" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
+    <Page.Resources>
+        <ResourceDictionary Source="../Themes/BasicTheme.xaml"/>
+    </Page.Resources>
+    
+    <Grid x:Name="grdMain" Margin="10,10,10,10">
+        <Label x:Name="lblTest" Content="Attack Page" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Panel.ZIndex="1"/>
+        <Rectangle x:Name="rctWallpaper" Fill="{DynamicResource Wallpaper}" Margin="282,108,282,108"/>
+        <Rectangle x:Name="rctHolo" Stroke="Black" Fill="{DynamicResource HologramGradient}" Panel.ZIndex="1"/>
+        <Rectangle x:Name="rctBackDrop" Stroke="Black" Fill="#3FFFFFFF"/>
     </Grid>
 </Page>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_SWL_Dice_Calculator.Models;
 using WPF_SWL_Dice_Calculator.Views;
 
 namespace WPF_SWL_Dice_Calculator
@@ -21,11 +22,15 @@ namespace WPF_SWL_Dice_Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        OptionModel _opt = new OptionModel();
+        pgAttackPool _pgAtt = null;
+        pgDefensePool _pgDef = null;
+        pgOptions _pgOpt = null;
+
+
         public MainWindow()
         {
             InitializeComponent();
-            frmAttack.Content = new pgAttackPool();
-            frmDefense.Content = new pgDefensePool();
         }
 
         private void InitializeTabsWidth()
@@ -33,13 +38,12 @@ namespace WPF_SWL_Dice_Calculator
             double bWidth = (tabsViews.ActualWidth / tabsViews.Items.Count);
             foreach (TabItem tab in tabsViews.Items)
             {
-                tab.Width =  bWidth -2;
+                tab.Width = bWidth - 2;
             }
         }
         private void winMainWindow_ContentRendered(object sender, EventArgs e)
         {
-            InitializeTabsWidth();
-            ChangeGridBackgroundColor();
+            ReloadAll();
         }
 
         private void winMainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -49,12 +53,84 @@ namespace WPF_SWL_Dice_Calculator
 
         private void tabsViews_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ChangeGridBackgroundColor();
+            SetTabColors();
         }
 
-        private void ChangeGridBackgroundColor()
+        private void SetTabColors()
         {
-            grdMain.Background = ((TabItem)tabsViews.SelectedItem).Background;
+            switch (((TabItem)tabsViews.SelectedItem).Name)
+            {
+                case "tabAttackPool":
+                    grdMain.Background = (SolidColorBrush)FindResource("AttackPoolBrush");
+                    tabsViews.Background = (LinearGradientBrush)FindResource("AttackPoolGradient");
+                    break;
+                case "tabDefensePool":
+                    grdMain.Background = (SolidColorBrush)FindResource("DefensePoolBrush");
+                    tabsViews.Background = (LinearGradientBrush)FindResource("DefensePoolGradient");
+                    break;
+                case "tabOptions":
+                    grdMain.Background = (SolidColorBrush)FindResource("OptionsBrush");
+                    tabsViews.Background = (LinearGradientBrush)FindResource("OptionsGradient");
+                    break;
+                default:
+                    grdMain.Background = (SolidColorBrush)FindResource("AttackPoolBrush");
+                    tabsViews.Background = (LinearGradientBrush)FindResource("AttackPoolGradient");
+                    break;
+            }
+        }
+
+        private void LoadPagesContent()
+        {
+
+            _pgAtt = new pgAttackPool();
+            _pgDef = new pgDefensePool();
+            _pgOpt = new pgOptions(_opt);
+
+            frmAttack.Content = _pgAtt;
+            frmDefense.Content = _pgDef;
+            frmOptions.Content = _pgOpt;
+        }
+
+        private void LoadTheme()
+        {
+            switch (_opt.Theme)
+            {
+                case OptionModel.VisualThemes.Empire:
+                    ChangeTheme(new Uri("../Themes/EmpireTheme.xaml", UriKind.Relative));
+                    break;
+                case OptionModel.VisualThemes.Rebels:
+                    ChangeTheme(new Uri("../Themes/RebelTheme.xaml", UriKind.Relative));
+                    break;
+                case OptionModel.VisualThemes.Republic:
+                    ChangeTheme(new Uri("../Themes/RepublicTheme.xaml", UriKind.Relative));
+                    break;
+                case OptionModel.VisualThemes.Separatists:
+                    ChangeTheme(new Uri("../Themes/CISTheme.xaml", UriKind.Relative));
+                    break;
+                case OptionModel.VisualThemes.Basic:
+                    ChangeTheme(new Uri("../Themes/BasicTheme.xaml", UriKind.Relative));
+                    break;
+                default:
+                    ChangeTheme(new Uri("../Themes/BasicTheme.xaml", UriKind.Relative));
+                    break;
+            }
+        }
+
+        private void ChangeTheme(Uri uri)
+        {
+            Resources.Source = uri;
+            _pgAtt.Resources.Source = uri;
+            _pgDef.Resources.Source = uri;
+            _pgOpt.Resources.Source = uri;
+        }
+
+        private void ReloadAll()
+        {
+            _opt = _opt.LoadOptions();
+            LoadPagesContent();
+            LoadTheme();
+            InitializeTabsWidth();
+            SetTabColors();
         }
     }
 }
