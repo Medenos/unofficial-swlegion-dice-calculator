@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="pgDefensePool">
 
-    <Grid>
+    <Grid x:Name="grdMain" Margin="10,10,10,10" Background="White">
         <Label x:Name="lblTest" Content="Defense Page" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
     </Grid>
 </Page>

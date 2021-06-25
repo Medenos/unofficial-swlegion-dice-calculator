@@ -22,7 +22,7 @@
     </Window.Resources>
 
     <Grid x:Name="grdMain" Background="{DynamicResource AttackPoolBrush}">
-        <TabControl x:Name="tabsViews" BorderBrush="{x:Null}" Background="{x:Null}" Margin="-5,-4,-5,0" SelectionChanged="tabsViews_SelectionChanged">
+        <TabControl x:Name="tabsViews" BorderBrush="{x:Null}" Background="{x:Null}" SelectionChanged="tabsViews_SelectionChanged" Margin="-2,-2,-2,0">
             <TabItem x:Name="tabAttackPool" Header="Attack Pool" Height="40" BorderBrush="{x:Null}" FontSize="16" FontFamily="Arial Black" Background="{DynamicResource AttackPoolBrush}" >
                 <TabItem.Template>
                     <ControlTemplate TargetType="{x:Type TabItem}">
