@@ -11,6 +11,11 @@
     <None Remove="Images\BasicWallpaper.jpg" />
     <None Remove="Images\CISLogo.png" />
     <None Remove="Images\Critical_hit.png" />
+    <None Remove="Images\DiceIcons\BlackAttackDie.png" />
+    <None Remove="Images\DiceIcons\RedAttackDie.png" />
+    <None Remove="Images\DiceIcons\RedDefenseDie.png" />
+    <None Remove="Images\DiceIcons\WhiteAttackDie.png" />
+    <None Remove="Images\DiceIcons\WhiteDefenseDie.png" />
     <None Remove="Images\EmpireLogo.png" />
     <None Remove="Images\RebelLogo.png" />
     <None Remove="Images\RepublicLogo.png" />
@@ -36,6 +41,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Critical_hit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\DiceIcons\BlackAttackDie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\DiceIcons\RedAttackDie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\DiceIcons\RedDefenseDie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\DiceIcons\WhiteAttackDie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\DiceIcons\WhiteDefenseDie.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\EmpireLogo.png">

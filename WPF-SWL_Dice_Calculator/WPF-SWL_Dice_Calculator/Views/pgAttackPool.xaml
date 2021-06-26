@@ -47,10 +47,23 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="imgWhiteAttack" Margin="13,38,13,37" Grid.Column="1"/>
+                <Image x:Name="imgWhiteAttack" Grid.Column="1" Source="/Images/DiceIcons/WhiteAttackDie.png"/>
+                <TextBox HorizontalAlignment="Center" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="0,79,0,0"/>
             </Grid>
-            <Grid x:Name="grdBlackAttack" Grid.Column="1"/>
-            <Grid x:Name="grdRedAttack" Grid.Column="2"/>
+            <Grid x:Name="grdBlackAttack" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="imgBlackAttack" Grid.Column="1" Source="/Images/DiceIcons/BlackAttackDie.png"/>
+            </Grid>
+            <Grid x:Name="grdRedAttack" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="imgRedAttack" Grid.Column="1" Source="/Images/DiceIcons/RedAttackDie.png"/>
+            </Grid>
             <!--<Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="0"/>
             <Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="1"/>
             <Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="2"/>
