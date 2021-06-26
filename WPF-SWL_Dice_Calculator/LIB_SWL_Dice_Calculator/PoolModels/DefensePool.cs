@@ -10,27 +10,46 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 {
     sealed public class DefensePool : DicePool
     {
+
+        public event EventHandler<List<Die>> DiceAddedOrRemoved;
+
+        public override List<Die> Pool
+        {
+            get
+            {
+                lstDiePool.Clear();
+                lstDiePool.AddRange(RedDice);
+                lstDiePool.AddRange(WhiteDice);
+
+                return lstDiePool;
+            }
+        }
+        List<DefenseRed> RedDice = new List<DefenseRed>();
+        List<DefenseWhite> WhiteDice = new List<DefenseWhite>();
+
+
         public void AddDie(DefenseDie dieToAdd)
         {
-            Pool.Add(dieToAdd);
+            DiceAddedOrRemoved?.Invoke(this, Pool);
         }
 
         public void AddDice(List<DefenseDie> diceToAdd)
         {
             foreach (DefenseDie die in diceToAdd)
                 AddDie(die);
+            DiceAddedOrRemoved?.Invoke(this, Pool);
         }
 
         public void RemoveDie(DefenseDie dieToRemove)
         {
-            if (Pool.Contains(dieToRemove))
-                Pool.Remove(dieToRemove);
+            DiceAddedOrRemoved?.Invoke(this, Pool);
         }
 
         public void RemoveDice(List<DefenseDie> diceToRemove)
         {
             foreach (DefenseDie die in diceToRemove)
                 RemoveDie(die);
+            DiceAddedOrRemoved?.Invoke(this, Pool);
         }
 
         public override DiceResult Roll()

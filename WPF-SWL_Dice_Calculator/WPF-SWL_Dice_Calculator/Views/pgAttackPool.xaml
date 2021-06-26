@@ -14,13 +14,12 @@
 
     <Grid x:Name="grdMain" Margin="10,10,10,10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="242*"/>
-            <RowDefinition Height="185*"/>
-            <RowDefinition Height="53*"/>
+            <RowDefinition Height="261*"/>
+            <RowDefinition Height="160*"/>
+            <RowDefinition Height="59*"/>
         </Grid.RowDefinitions>
         <Rectangle x:Name="rctWallpaper" Fill="{DynamicResource Wallpaper}" Margin="126,54,126,54" Grid.RowSpan="2" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="rctHolo" Stroke="Black" Fill="{DynamicResource HologramGradient}" Panel.ZIndex="-1" Grid.RowSpan="3"/>
-        <Rectangle x:Name="rctBackDrop" Stroke="Black" Fill="#3FFFFFFF" Grid.RowSpan="3" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="rctBackDrop" Stroke="{DynamicResource BoxBorderColor}" Fill="#3FFFFFFF" Grid.RowSpan="3" Panel.ZIndex="-1"/>
         <Grid x:Name="grdResutls" Margin="10,10,10,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -34,7 +33,6 @@
             <Grid x:Name="grdHits" Grid.Row="1"/>
             <Grid x:Name="grdCriticalHits" Grid.Column="1" Grid.Row="1"/>
             <Grid x:Name="grdSurges" Grid.Column="2" Grid.Row="1"/>
-            <!--<Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="3"/>-->
         </Grid>
         <Grid x:Name="grdDiceSelection" Margin="10,10,10,0" Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -43,36 +41,28 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid x:Name="grdWhiteAttack">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Image x:Name="imgWhiteAttack" Grid.Column="1" Source="/Images/DiceIcons/WhiteAttackDie.png"/>
-                <TextBox HorizontalAlignment="Center" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="0,79,0,0"/>
+                <Image x:Name="imgWhiteAttack" Source="/Images/DiceIcons/WhiteAttackDie.png" />
+                <Viewbox x:Name="vbWhite">
+                    <TextBox x:Name="txtWhite" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="20,20,20,20" />
+                </Viewbox>
             </Grid>
             <Grid x:Name="grdBlackAttack" Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
                 <Image x:Name="imgBlackAttack" Grid.Column="1" Source="/Images/DiceIcons/BlackAttackDie.png"/>
+                <Viewbox x:Name="vbBlack">
+                    <TextBox x:Name="txtBlack" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="20,20,20,20" />
+                </Viewbox>
             </Grid>
             <Grid x:Name="grdRedAttack" Grid.Column="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
                 <Image x:Name="imgRedAttack" Grid.Column="1" Source="/Images/DiceIcons/RedAttackDie.png"/>
+                <Viewbox x:Name="vbRed">
+                    <TextBox x:Name="txtRed" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="20,20,20,20" PreviewKeyDown="txtRed_PreviewKeyDown" />
+                </Viewbox>
             </Grid>
-            <!--<Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="0"/>
-            <Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="1"/>
-            <Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="2"/>
-            <Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="0" Grid.RowSpan="3"/>-->
         </Grid>
         <Grid x:Name="grdButtons" Grid.Row="2">
-            <Button x:Name="btnRoll" Grid.Column="1" Panel.ZIndex="2" Margin="5,5,5,5" FontFamily="Arial Black" FontSize="24">
+            <Button x:Name="btnRoll" Grid.Column="1" Panel.ZIndex="2" Margin="5,10,5,10" FontFamily="Arial Black" FontSize="24" Background="{DynamicResource ButtonBackground}" BorderBrush="{DynamicResource BoxBorderColor}" Foreground="{DynamicResource HologramGradient}" BorderThickness="2,2,2,2">
                 <Viewbox>
-                    <TextBlock x:Name="txbRollButton" Text="ROLL" />
+                    <TextBlock x:Name="txbRollButton" Text="ROLL" Foreground="{DynamicResource HologramGradient}" FontSize="12" Margin="5,2,5,2" />
                 </Viewbox>
             </Button>
             <Grid.ColumnDefinitions>
