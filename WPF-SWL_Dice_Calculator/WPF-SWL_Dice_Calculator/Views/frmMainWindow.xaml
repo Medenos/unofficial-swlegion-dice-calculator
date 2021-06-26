@@ -85,7 +85,7 @@
                     </ControlTemplate>
                 </TabItem.Template>
                 <Grid x:Name="grdDefensePool">
-                    <Frame x:Name="frmDefense" Content="Defense" NavigationUIVisibility="Hidden" Margin="0,0,0,45"/>
+                    <Frame x:Name="frmDefense" Content="Defense" NavigationUIVisibility="Hidden" Margin="0,0,0,33"/>
                 </Grid>
             </TabItem>
             <!--<TabItem x:Name="tabOptions" Header="Options" Height="40" BorderBrush="{x:Null}" FontSize="16" FontFamily="Arial Black" Background="{DynamicResource AttackPoolBrush}" >
