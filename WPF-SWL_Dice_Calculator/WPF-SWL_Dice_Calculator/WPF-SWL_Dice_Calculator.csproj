@@ -40,6 +40,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LIB_SWL_Dice_Calculator\LIB_SWL_Dice_Calculator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\BasicWallpaper.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

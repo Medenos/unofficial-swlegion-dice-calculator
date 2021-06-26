@@ -10,27 +10,59 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 {
     sealed public class AttackPool : DicePool
     {
+
+        public event EventHandler<List<Die>> DiceAddedOrRemoved;
+
+        public override List<Die> Pool
+        {
+            get
+            {
+                lstDiePool.Clear();
+                lstDiePool.AddRange(RedDice);
+                lstDiePool.AddRange(BlackDice);
+                lstDiePool.AddRange(WhiteDice);
+
+                return lstDiePool;
+            }
+        }
+
+        private List<AttackRed> RedDice = new List<AttackRed>();
+        private List<AttackBlack> BlackDice = new List<AttackBlack>();
+        private List<AttackWhite> WhiteDice = new List<AttackWhite>();
+
         public void AddDie(AttackDie dieToAdd)
         {
-            Pool.Add(dieToAdd);
+            switch (dieToAdd.GetType().Name)
+            {
+                case "AttackRed":
+                    break;
+                case "AttackBlack":
+                    break;
+                case "AttackWhite":
+                    break;
+                default:
+                    break;
+            }
+            DiceAddedOrRemoved?.Invoke(this, Pool);
         }
 
         public void AddDice(List<AttackDie> diceToAdd)
         {
             foreach (AttackDie die in diceToAdd)
                 AddDie(die);
+            DiceAddedOrRemoved?.Invoke(this, Pool);
         }
 
         public void RemoveDie(AttackDie dieToRemove)
         {
-            if (Pool.Contains(dieToRemove))
-                Pool.Remove(dieToRemove);
+            DiceAddedOrRemoved?.Invoke(this, Pool);
         }
 
         public void RemoveDice(List<AttackDie> diceToRemove)
         {
             foreach (AttackDie die in diceToRemove)
                 RemoveDie(die);
+            DiceAddedOrRemoved?.Invoke(this, Pool);
         }
 
         public override DiceResult Roll()

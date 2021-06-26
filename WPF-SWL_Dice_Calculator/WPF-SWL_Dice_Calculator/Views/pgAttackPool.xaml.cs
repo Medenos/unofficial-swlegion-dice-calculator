@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LIB_SWL_Dice_Calculator.PoolModels;
+using LIB_SWL_Dice_Calculator.DiceModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,33 @@ namespace WPF_SWL_Dice_Calculator.Views
     /// </summary>
     public partial class pgAttackPool : Page
     {
+        AttackPool _pool = null;
+
         public pgAttackPool()
         {
             InitializeComponent();
+            _pool = new AttackPool();
+            _pool.DiceAddedOrRemoved += _pool_DiceAddedOrRemoved;
+        }
+
+        private void _pool_DiceAddedOrRemoved(object sender, List<Die> e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void txtRed_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Down:
+                    _pool.RemoveDie(new AttackRed());
+                    break;
+                case Key.Up:
+                    _pool.AddDie(new AttackRed());
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

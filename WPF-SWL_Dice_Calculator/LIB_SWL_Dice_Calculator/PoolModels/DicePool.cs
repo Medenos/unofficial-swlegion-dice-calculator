@@ -10,10 +10,8 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 {
     public abstract class DicePool
     {
-        /// <summary>
-        /// A list with all the dice in the pool
-        /// </summary>
-        public List<Die> Pool { get; protected set; }
+        protected List<Die> lstDiePool = new List<Die>();
+        abstract public List<Die> Pool { get; }
 
         /// <summary>
         /// Roll the dice in the pool

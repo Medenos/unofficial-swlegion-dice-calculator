@@ -43,26 +43,26 @@
             <Grid x:Name="grdWhiteAttack">
                 <Image x:Name="imgWhiteAttack" Source="/Images/DiceIcons/WhiteAttackDie.png" />
                 <Viewbox x:Name="vbWhite">
-                    <TextBlock x:Name="txbWhiteDiceAmount" Text="00" TextWrapping="Wrap" Panel.ZIndex="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20,20,20,20" ScrollViewer.CanContentScroll="True" Foreground="{DynamicResource HologramGradient}"/>
+                    <TextBox x:Name="txtWhite" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="20,20,20,20" />
                 </Viewbox>
             </Grid>
             <Grid x:Name="grdBlackAttack" Grid.Column="1">
                 <Image x:Name="imgBlackAttack" Grid.Column="1" Source="/Images/DiceIcons/BlackAttackDie.png"/>
                 <Viewbox x:Name="vbBlack">
-                    <TextBlock x:Name="txbBlackDiceAmount" Text="00" TextWrapping="Wrap" Panel.ZIndex="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20,20,20,20" ScrollViewer.CanContentScroll="True" Foreground="{DynamicResource HologramGradient}"/>
+                    <TextBox x:Name="txtBlack" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="20,20,20,20" />
                 </Viewbox>
             </Grid>
             <Grid x:Name="grdRedAttack" Grid.Column="2">
                 <Image x:Name="imgRedAttack" Grid.Column="1" Source="/Images/DiceIcons/RedAttackDie.png"/>
                 <Viewbox x:Name="vbRed">
-                    <TextBlock x:Name="txbRedDiceAmount" Text="00" TextWrapping="Wrap" Panel.ZIndex="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20,20,20,20" ScrollViewer.CanContentScroll="True" Foreground="{DynamicResource HologramGradient}"/>
+                    <TextBox x:Name="txtRed" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="20,20,20,20" PreviewKeyDown="txtRed_PreviewKeyDown" />
                 </Viewbox>
             </Grid>
         </Grid>
         <Grid x:Name="grdButtons" Grid.Row="2">
             <Button x:Name="btnRoll" Grid.Column="1" Panel.ZIndex="2" Margin="5,10,5,10" FontFamily="Arial Black" FontSize="24" Background="{DynamicResource ButtonBackground}" BorderBrush="{DynamicResource BoxBorderColor}" Foreground="{DynamicResource HologramGradient}" BorderThickness="2,2,2,2">
                 <Viewbox>
-                    <TextBlock x:Name="txbRollButton" Text="ROLL" Foreground="{DynamicResource HologramGradient}" />
+                    <TextBlock x:Name="txbRollButton" Text="ROLL" Foreground="{DynamicResource HologramGradient}" FontSize="12" Margin="5,2,5,2" />
                 </Viewbox>
             </Button>
             <Grid.ColumnDefinitions>
