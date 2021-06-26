@@ -14,10 +14,13 @@
     <Grid x:Name="grdMain" Background="{DynamicResource AttackPoolBrush}">
         <Button x:Name="btnSettings" Content="_Settings" Margin="10,0,0,10" Panel.ZIndex="1" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="110" Click="btnSettings_Click"/>
         <TabControl x:Name="tabsViews" BorderBrush="{x:Null}" SelectionChanged="tabsViews_SelectionChanged" Margin="-2,-2,-2,-2" Background="{DynamicResource AttackPoolGradient}">
-            <TabItem x:Name="tabAttackPool" Header="Attack Pool" Height="40" BorderBrush="{x:Null}" FontSize="16" FontFamily="Arial Black" Background="{DynamicResource AttackPoolBrush}" >
+            <TabItem x:Name="tabAttackPool" Height="40" BorderBrush="{x:Null}" FontSize="16" FontFamily="Arial Black" Background="{DynamicResource AttackPoolBrush}" >
                 <TabItem.Template>
                     <ControlTemplate TargetType="{x:Type TabItem}">
                         <Grid>
+                            <Viewbox Panel.ZIndex="1">
+                                <TextBlock x:Name="txtbAttackHeader" Text="Attack Pool" Panel.ZIndex="1" Margin="5,11,5,11" />
+                            </Viewbox>
                             <Border 
                                 Name="Border"
                                 Margin="0,0,0,0" 
@@ -45,16 +48,20 @@
                                 <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
+
                     </ControlTemplate>
                 </TabItem.Template>
                 <Grid x:Name="grdAttackPool">
                     <Frame x:Name="frmAttack" Content="Attack" NavigationUIVisibility="Hidden" Margin="0,0,0,33"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabDefensePool" Header="Defense Pool" Height="40" BorderBrush="{x:Null}" FontFamily="Arial Black" FontSize="16" Background="{DynamicResource DefensePoolBrush}" >
+            <TabItem x:Name="tabDefensePool" Height="40" BorderBrush="{x:Null}" FontFamily="Arial Black" FontSize="16" Background="{DynamicResource DefensePoolBrush}" >
                 <TabItem.Template>
                     <ControlTemplate TargetType="{x:Type TabItem}">
                         <Grid>
+                            <Viewbox Panel.ZIndex="1">
+                                <TextBlock x:Name="txtbDefenseHeader" Text="Defense Pool" Panel.ZIndex="1" Margin="5,11,5,11" />
+                            </Viewbox>
                             <Border 
                                 Name="Border"
                                 Margin="0,0,0,0" 

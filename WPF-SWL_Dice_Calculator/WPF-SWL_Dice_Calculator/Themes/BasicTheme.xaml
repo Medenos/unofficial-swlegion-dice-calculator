@@ -22,6 +22,8 @@
 
     <SolidColorBrush x:Key="OptionsBrush" Color="#FF7D8183"/>
 
+    <SolidColorBrush x:Key="BoxBorderColor" Color="#FF373636"/>
+
     <LinearGradientBrush x:Key="OptionsGradient" StartPoint="0,0" EndPoint="0,1" >
 
         <GradientStop Color="#FF7D8183" Offset="0" />

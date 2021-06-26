@@ -13,11 +13,54 @@
     </Page.Resources>
 
     <Grid x:Name="grdMain" Margin="10,10,10,10">
-        <Label x:Name="lblTest" Content="Attack Page" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Panel.ZIndex="1"/>
-        <Rectangle x:Name="rctWallpaper" Fill="{DynamicResource Wallpaper}" HorizontalAlignment="Center" Width="417" Height="410" VerticalAlignment="Center"/>
-
-        <Rectangle x:Name="rctHolo" Stroke="Black" Fill="{DynamicResource HologramGradient}" Panel.ZIndex="1"/>
-        <Rectangle x:Name="rctBackDrop" Stroke="Black" Fill="#3FFFFFFF"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="242*"/>
+            <RowDefinition Height="185*"/>
+            <RowDefinition Height="53*"/>
+        </Grid.RowDefinitions>
+        <Rectangle x:Name="rctWallpaper" Fill="{DynamicResource Wallpaper}" Margin="126,54,126,54" Grid.RowSpan="2" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="rctHolo" Stroke="Black" Fill="{DynamicResource HologramGradient}" Panel.ZIndex="-1" Grid.RowSpan="3"/>
+        <Rectangle x:Name="rctBackDrop" Stroke="Black" Fill="#3FFFFFFF" Grid.RowSpan="3" Panel.ZIndex="-1"/>
+        <Grid x:Name="grdResutls" Margin="10,10,10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="60*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="grdHits" Grid.Row="1"/>
+            <Grid x:Name="grdCriticalHits" Grid.Column="1" Grid.Row="1"/>
+            <Grid x:Name="grdSurges" Grid.Column="2" Grid.Row="1"/>
+            <!--<Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="3"/>-->
+        </Grid>
+        <Grid x:Name="grdDiceSelection" Margin="10,10,10,0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="grdWhiteAttack"/>
+            <Grid x:Name="grdBlackAttack" Grid.Column="1"/>
+            <Grid x:Name="grdRedAttack" Grid.Column="2"/>
+            <!--<Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="0"/>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="1"/>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="2"/>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource BoxBorderColor}" Grid.Column="0" Grid.RowSpan="3"/>-->
+        </Grid>
+        <Grid x:Name="grdButtons" Grid.Row="2">
+            <Button x:Name="btnRoll" Grid.Column="1" Panel.ZIndex="2" Margin="5,5,5,5" FontFamily="Arial Black" FontSize="24">
+                <Viewbox>
+                    <TextBlock x:Name="txbRollButton" Text="ROLL" />
+                </Viewbox>
+            </Button>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
     </Grid>
-    
 </Page>

@@ -35,10 +35,12 @@ namespace WPF_SWL_Dice_Calculator
 
         private void InitializeTabsWidth()
         {
-            double bWidth = (tabsViews.ActualWidth / tabsViews.Items.Count);
+            double dHeight = (tabsViews.ActualHeight / 10);
+            double dWidth = (tabsViews.ActualWidth / tabsViews.Items.Count);
             foreach (TabItem tab in tabsViews.Items)
             {
-                tab.Width = bWidth - 2;
+                tab.Width = dWidth - 2;
+                tab.Height = dHeight;
             }
         }
         private void winMainWindow_ContentRendered(object sender, EventArgs e)
