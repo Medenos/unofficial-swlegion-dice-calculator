@@ -93,4 +93,8 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\FacesIcons\" />
+  </ItemGroup>
+
 </Project>

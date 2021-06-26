@@ -27,7 +27,6 @@ namespace WPF_SWL_Dice_Calculator
         pgAttackPool _pgAtt = null;
         pgDefensePool _pgDef = null;
 
-
         public MainWindow()
         {
             InitializeComponent();
