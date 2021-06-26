@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_SWL_Dice_Calculator"
         mc:Ignorable="d"
-        Title="Legion Dice Calculator" Height="600" Width="500" ContentRendered="winMainWindow_ContentRendered" SizeChanged="winMainWindow_SizeChanged" Icon="/Images/Critical_hit.png" MinWidth="500" MinHeight="600">
+        Title="Legion Dice Calculator" Height="600" Width="600" ContentRendered="winMainWindow_ContentRendered" SizeChanged="winMainWindow_SizeChanged" Icon="/Images/Critical_hit.png" MinWidth="600" MinHeight="600">
 
     <Window.Resources>
         <ResourceDictionary Source="../Themes/BasicTheme.xaml"/>
