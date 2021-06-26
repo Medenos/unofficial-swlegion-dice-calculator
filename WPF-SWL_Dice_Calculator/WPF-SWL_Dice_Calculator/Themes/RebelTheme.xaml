@@ -30,7 +30,7 @@
 
     </LinearGradientBrush>
 
-    <ImageBrush x:Key="Wallpaper" Opacity="0.25" Stretch="Uniform" ></ImageBrush>
+    <ImageBrush x:Key="Wallpaper" ImageSource="../Images/RebelLogo.png" Opacity="0.25" Stretch="Uniform" ></ImageBrush>
 
     <LinearGradientBrush x:Key="HologramGradient" StartPoint="0,0" EndPoint="0,1" Opacity=".1">
 

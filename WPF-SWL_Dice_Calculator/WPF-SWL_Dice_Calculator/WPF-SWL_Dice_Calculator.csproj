@@ -13,12 +13,15 @@
     <None Remove="Images\Critical_hit.png" />
     <None Remove="Images\EmpireLogo.png" />
     <None Remove="Images\RebelLogo.png" />
-    <None Remove="Images\RebuplicLogo.png" />
+    <None Remove="Images\RepublicLogo.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Remove="Themes\BasicTheme.xaml" />
+    <Page Remove="Themes\CISTheme.xaml" />
     <Page Remove="Themes\EmpireTheme.xaml" />
+    <Page Remove="Themes\RebelTheme.xaml" />
+    <Page Remove="Themes\RepublicTheme.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,8 +44,23 @@
     <Resource Include="Images\RebelLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\RebuplicLogo.png">
+    <Resource Include="Images\RepublicLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Themes\CISTheme.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Themes\RebelTheme.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Themes\RepublicTheme.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Resource>
     <Resource Include="Themes\EmpireTheme.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

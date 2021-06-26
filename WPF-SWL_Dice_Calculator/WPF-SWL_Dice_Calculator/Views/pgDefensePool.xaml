@@ -14,8 +14,9 @@
     
     <Grid x:Name="grdMain" Margin="10,10,10,10">
         <Label x:Name="lblTest" Content="Defense Page" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Panel.ZIndex="1"/>
-        <Rectangle x:Name="rctWallpaper" Fill="{DynamicResource Wallpaper}" Margin="282,108,282,108"/>
+        <Rectangle x:Name="rctWallpaper" Fill="{DynamicResource Wallpaper}" Margin="178,6,178,6"/>
         <Rectangle x:Name="rctHolo" Stroke="Black" Fill="{DynamicResource HologramGradient}" Panel.ZIndex="1"/>
         <Rectangle x:Name="rctBackDrop" Stroke="Black" Fill="#3FFFFFFF"/>
     </Grid>
+    
 </Page>

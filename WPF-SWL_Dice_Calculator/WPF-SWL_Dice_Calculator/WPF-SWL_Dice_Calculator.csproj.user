@@ -13,11 +13,20 @@
     <Compile Update="Views\pgDefensePool.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\pgOptions.xaml.cs">
+    <Compile Update="Views\winOption.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Resource Update="Themes\CISTheme.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Update="Themes\RebelTheme.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Update="Themes\RepublicTheme.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Resource Update="Themes\EmpireTheme.xaml">
       <SubType>Designer</SubType>
     </Resource>
@@ -33,7 +42,7 @@
     <Page Update="Views\pgDefensePool.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\pgOptions.xaml">
+    <Page Update="Views\winOption.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

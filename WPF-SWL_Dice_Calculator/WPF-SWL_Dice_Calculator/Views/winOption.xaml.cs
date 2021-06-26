@@ -10,20 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF_SWL_Dice_Calculator.Models;
 
 namespace WPF_SWL_Dice_Calculator.Views
 {
     /// <summary>
-    /// Interaction logic for pgOptions.xaml
+    /// Interaction logic for winOption.xaml
     /// </summary>
-    public partial class pgOptions : Page
+    public partial class winOption : Window
     {
-        public pgOptions(OptionModel opt)
+
+        OptionModel _opt = new OptionModel();
+        public event EventHandler<OptionModel> UpdateOption;
+
+        public winOption(OptionModel opt)
         {
             InitializeComponent();
+            _opt = opt;
+            cmbTheme.ItemsSource = Enum.GetValues(typeof(OptionModel.VisualThemes));
+            DataContext = _opt;
+        }
+
+        private void cmbTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateOption?.Invoke(this, _opt);
         }
     }
 }

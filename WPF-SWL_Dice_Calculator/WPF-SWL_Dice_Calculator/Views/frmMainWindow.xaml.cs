@@ -23,9 +23,9 @@ namespace WPF_SWL_Dice_Calculator
     public partial class MainWindow : Window
     {
         OptionModel _opt = new OptionModel();
+        winOption _optWindow = null;
         pgAttackPool _pgAtt = null;
         pgDefensePool _pgDef = null;
-        pgOptions _pgOpt = null;
 
 
         public MainWindow()
@@ -84,11 +84,10 @@ namespace WPF_SWL_Dice_Calculator
 
             _pgAtt = new pgAttackPool();
             _pgDef = new pgDefensePool();
-            _pgOpt = new pgOptions(_opt);
 
             frmAttack.Content = _pgAtt;
             frmDefense.Content = _pgDef;
-            frmOptions.Content = _pgOpt;
+            //frmOptions.Content = _pgOpt;
         }
 
         private void LoadTheme()
@@ -121,7 +120,6 @@ namespace WPF_SWL_Dice_Calculator
             Resources.Source = uri;
             _pgAtt.Resources.Source = uri;
             _pgDef.Resources.Source = uri;
-            _pgOpt.Resources.Source = uri;
         }
 
         private void ReloadAll()
@@ -131,6 +129,31 @@ namespace WPF_SWL_Dice_Calculator
             LoadTheme();
             InitializeTabsWidth();
             SetTabColors();
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            if (_optWindow == null)
+            {
+                _optWindow = new winOption(_opt);
+                _optWindow.Owner = this;
+                _optWindow.Closed += _optWindow_Closed;
+                _optWindow.UpdateOption += _optWindow_UpdateOption;
+                _optWindow.Show();
+            }
+            else
+                _optWindow.Activate();
+        }
+
+        private void _optWindow_UpdateOption(object sender, OptionModel e)
+        {
+            e.SaveOptions();
+            ReloadAll();
+        }
+
+        private void _optWindow_Closed(object sender, EventArgs e)
+        {
+            _optWindow = null;
         }
     }
 }
