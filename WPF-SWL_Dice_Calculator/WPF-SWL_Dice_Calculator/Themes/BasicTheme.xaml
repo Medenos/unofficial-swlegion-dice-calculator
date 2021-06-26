@@ -34,7 +34,9 @@
 
     <ImageBrush x:Key="Wallpaper" Opacity="0.25" Stretch="Uniform" ></ImageBrush>
 
-    <LinearGradientBrush x:Key="HologramGradient" StartPoint="0,0" EndPoint="0,1" Opacity=".1">
+    <SolidColorBrush x:Key="HologramSolid" Color="#FF2B2B71"/>
+
+    <LinearGradientBrush x:Key="HologramGradient" StartPoint="0,0" EndPoint="0,1" >
 
         <GradientStop Color="#FF88D0FF" Offset="0" />
         <GradientStop Color="#FF2B2B71" Offset="0.025" />
@@ -80,6 +82,10 @@
 
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="ButtonBackground" Color="White"/>
+
+    <SolidColorBrush x:Key="ButtonBorder" Color="Black"/>
+
     <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
 
     <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
@@ -88,7 +94,14 @@
 
     <SolidColorBrush x:Key="EnabledForegroundBrush" Color="#FFCFCFCF" />
 
+    <Style TargetType="Button">
+        <Setter Property="FontFamily" Value="ArialBlack"/>
+    </Style>
+
     <Style TargetType="Image">
         <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
+    </Style>
+    <Style TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Impact"/>
     </Style>
 </ResourceDictionary>
