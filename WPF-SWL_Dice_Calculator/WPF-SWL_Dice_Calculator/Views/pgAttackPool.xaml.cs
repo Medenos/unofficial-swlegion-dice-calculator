@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LIB_SWL_Dice_Calculator.ResultModels;
+using WPF_SWL_Dice_Calculator.Models;
 
 namespace WPF_SWL_Dice_Calculator.Views
 {
@@ -25,16 +26,23 @@ namespace WPF_SWL_Dice_Calculator.Views
     {
         AttackPool _pool = null;
         MediaPlayer _soundPLayer = new MediaPlayer();
+        public OptionModel _opt = new OptionModel();
         bool _isPlaying = false;
         const int UPPER_BOUND = 99;
         const int LOWER_BOUND = 0;
-        const string RELATIVE_SOUND_PATH = "../Audio/DiceSounds";
+        const string RELATIVE_SOUND_PATH = "pack://siteoforigin:,,,/Audio/DiceSounds/";
 
         public pgAttackPool()
         {
             InitializeComponent();
             _soundPLayer.MediaEnded += _soundPLayer_MediaEnded;
+            _soundPLayer.MediaFailed += _soundPLayer_MediaFailed;
             _pool = new AttackPool();
+        }
+
+        private void _soundPLayer_MediaFailed(object sender, ExceptionEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void _soundPLayer_MediaEnded(object sender, EventArgs e)
@@ -207,20 +215,27 @@ namespace WPF_SWL_Dice_Calculator.Views
             bool bPlay = true;
 
             if (_pool.TotalDiceAmount == 1)
-                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_one.wav", UriKind.Relative);
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "Attack_one.wav", UriKind.RelativeOrAbsolute);
             else if (_pool.TotalDiceAmount > 1 && _pool.TotalDiceAmount <= 3)
-                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_aLittle.wav", UriKind.Relative);
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "Attack_aLittle.wav", UriKind.RelativeOrAbsolute);
             else if (_pool.TotalDiceAmount > 3 && _pool.TotalDiceAmount <= 6)
-                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_some.wav", UriKind.Relative);
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "Attack_some.wav", UriKind.RelativeOrAbsolute);
             else if (_pool.TotalDiceAmount > 6 && _pool.TotalDiceAmount <= 10)
-                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_aLot.wav", UriKind.Relative);
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "Attack_aLot.wav", UriKind.RelativeOrAbsolute);
             else if (_pool.TotalDiceAmount > 10)
-                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_all.wav", UriKind.Relative);
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "Attack_all.wav", UriKind.RelativeOrAbsolute);
             else
                 bPlay = false;
 
+            if (_opt.Muted != true)
+                _soundPLayer.IsMuted = false;
+            else
+                _soundPLayer.IsMuted = true;
+
+
             if (!_isPlaying && bPlay)
             {
+                _soundPLayer.Volume = 1;
                 _soundPLayer.Open(uriToPlay);
                 _soundPLayer.Play();
             }

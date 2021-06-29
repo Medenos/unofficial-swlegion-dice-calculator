@@ -39,5 +39,10 @@ namespace WPF_SWL_Dice_Calculator.Views
             UpdateOption?.Invoke(this, _opt);
         }
 
+        private void chkMute_Click(object sender, RoutedEventArgs e)
+        {
+            //_opt.Muted = chkMute.IsChecked;
+            UpdateOption?.Invoke(this,_opt);
+        }
     }
 }

@@ -10,7 +10,7 @@
     <Grid x:Name="grdOption" Margin="10,0,10,10">
         <ComboBox x:Name="cmbTheme" Margin="64,29,10,0" VerticalAlignment="Top" SelectionChanged="cmbTheme_SelectionChanged" SelectedItem="{Binding Theme}"/>
         <Label x:Name="lblTheme" Content="Theme:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chkMute" Content="_Mute Sounds" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkMute" Content="_Mute Sounds" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Click="chkMute_Click" IsChecked="{Binding Muted}"/>
 
     </Grid>
 </Window>

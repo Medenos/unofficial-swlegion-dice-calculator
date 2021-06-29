@@ -122,6 +122,7 @@ namespace WPF_SWL_Dice_Calculator
         private void ReloadAll()
         {
             _opt = _opt.LoadOptions();
+            _pgAtt._opt = _opt;
             LoadTheme();
             InitializeTabsWidth();
             SetTabColors();
