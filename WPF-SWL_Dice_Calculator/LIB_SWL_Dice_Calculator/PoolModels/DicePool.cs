@@ -10,9 +10,6 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 {
     public abstract class DicePool
     {
-        protected List<Die> lstDiePool = new List<Die>();
-        abstract public List<Die> Pool { get; }
-
         /// <summary>
         /// Roll the dice in the pool
         /// </summary>
@@ -23,18 +20,6 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
         /// Calculate the average of the pool
         /// </summary>
         /// <returns></returns>
-        public float GetAverage(bool bCountSurges)
-        {
-            float fAverage = 0f;
-
-            if (bCountSurges)
-                foreach (Die die in Pool)
-                    fAverage += die.GetAverage(true);
-            else
-                foreach (Die die in Pool)
-                    fAverage += die.GetAverage();
-
-            return fAverage;
-        }
+        abstract public float GetAverage(bool bSurge);
     }
 }

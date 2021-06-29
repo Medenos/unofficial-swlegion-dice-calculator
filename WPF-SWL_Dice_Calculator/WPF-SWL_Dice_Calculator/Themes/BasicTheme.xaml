@@ -92,16 +92,13 @@
 
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="Black" />
 
-    <SolidColorBrush x:Key="EnabledForegroundBrush" Color="#FFCFCFCF" />
+    <SolidColorBrush x:Key="EnabledForegroundBrush" Color="White" />
 
-    <Style TargetType="Button">
-        <Setter Property="FontFamily" Value="Impact"/>
-    </Style>
+    <FontFamily x:Key="MainFont">Impact</FontFamily>
+    <SolidColorBrush x:Key="MainFontColor" Color="Black"/>
 
     <Style TargetType="Image">
         <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
     </Style>
-    <Style TargetType="TextBox">
-        <Setter Property="FontFamily" Value="Impact"/>
-    </Style>
+
 </ResourceDictionary>

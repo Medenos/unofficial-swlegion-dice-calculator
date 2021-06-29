@@ -69,10 +69,6 @@ namespace WPF_SWL_Dice_Calculator
                     grdMain.Background = (SolidColorBrush)FindResource("DefensePoolBrush");
                     tabsViews.Background = (LinearGradientBrush)FindResource("DefensePoolGradient");
                     break;
-                case "tabOptions":
-                    grdMain.Background = (SolidColorBrush)FindResource("OptionsBrush");
-                    tabsViews.Background = (LinearGradientBrush)FindResource("OptionsGradient");
-                    break;
                 default:
                     grdMain.Background = (SolidColorBrush)FindResource("AttackPoolBrush");
                     tabsViews.Background = (LinearGradientBrush)FindResource("AttackPoolGradient");
@@ -88,7 +84,6 @@ namespace WPF_SWL_Dice_Calculator
 
             frmAttack.Content = _pgAtt;
             frmDefense.Content = _pgDef;
-            //frmOptions.Content = _pgOpt;
         }
 
         private void LoadTheme()

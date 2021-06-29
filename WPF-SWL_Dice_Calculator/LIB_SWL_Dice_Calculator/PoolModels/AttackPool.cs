@@ -10,59 +10,34 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 {
     sealed public class AttackPool : DicePool
     {
+        public int RedDiceAmount { get; set; }
+        public int BlackDiceAmount { get; set; }
+        public int WhiteDiceAmount { get; set; }
 
-        public event EventHandler<List<Die>> DiceAddedOrRemoved;
-
-        public override List<Die> Pool
+        public override float GetAverage(bool bSurge)
         {
-            get
-            {
-                lstDiePool.Clear();
-                lstDiePool.AddRange(RedDice);
-                lstDiePool.AddRange(BlackDice);
-                lstDiePool.AddRange(WhiteDice);
+            float fReturn = 0f;
 
-                return lstDiePool;
-            }
-        }
+            //Create a red die and gets its average, then adds the average times the amount to the return value
+            AttackDie tempDie = new AttackRed();
+            float fTempAverage = 0f;
+            fTempAverage = tempDie.GetAverage(bSurge);
 
-        private List<AttackRed> RedDice = new List<AttackRed>();
-        private List<AttackBlack> BlackDice = new List<AttackBlack>();
-        private List<AttackWhite> WhiteDice = new List<AttackWhite>();
+            fReturn += fTempAverage * RedDiceAmount;
 
-        public void AddDie(AttackDie dieToAdd)
-        {
-            switch (dieToAdd.GetType().Name)
-            {
-                case "AttackRed":
-                    break;
-                case "AttackBlack":
-                    break;
-                case "AttackWhite":
-                    break;
-                default:
-                    break;
-            }
-            DiceAddedOrRemoved?.Invoke(this, Pool);
-        }
+            //Creates a black die and gets its average, then adds the average times the amount to the return value
+            tempDie = new AttackBlack();
+            fTempAverage = tempDie.GetAverage(bSurge);
 
-        public void AddDice(List<AttackDie> diceToAdd)
-        {
-            foreach (AttackDie die in diceToAdd)
-                AddDie(die);
-            DiceAddedOrRemoved?.Invoke(this, Pool);
-        }
+            fReturn += fTempAverage * BlackDiceAmount;
 
-        public void RemoveDie(AttackDie dieToRemove)
-        {
-            DiceAddedOrRemoved?.Invoke(this, Pool);
-        }
+            //Creates a white die and gets its average, then adds the average times the amount to the return value
+            tempDie = new AttackWhite();
+            fTempAverage = tempDie.GetAverage(bSurge);
 
-        public void RemoveDice(List<AttackDie> diceToRemove)
-        {
-            foreach (AttackDie die in diceToRemove)
-                RemoveDie(die);
-            DiceAddedOrRemoved?.Invoke(this, Pool);
+            fReturn += fTempAverage * WhiteDiceAmount;
+
+            return fReturn;
         }
 
         public override DiceResult Roll()
@@ -70,9 +45,57 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 
             AttackResult result = new AttackResult();
 
-            foreach (AttackDie die in Pool)
+            //Roll all red dice
+            AttackDie tempDie = new AttackRed();
+            for (int i = 0; i < RedDiceAmount; i++)
             {
-                switch (die.Roll())
+                switch (tempDie.Roll())
+                {
+                    case Die.Result.Blank:
+                        result.Blanks++;
+                        break;
+                    case Die.Result.Hit:
+                        result.Hits++;
+                        break;
+                    case Die.Result.Critical:
+                        result.Criticals++;
+                        break;
+                    case Die.Result.Surge:
+                        result.Surges++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            //Roll all Black dice
+            tempDie = new AttackBlack();
+            for (int i = 0; i < BlackDiceAmount; i++)
+            {
+                switch (tempDie.Roll())
+                {
+                    case Die.Result.Blank:
+                        result.Blanks++;
+                        break;
+                    case Die.Result.Hit:
+                        result.Hits++;
+                        break;
+                    case Die.Result.Critical:
+                        result.Criticals++;
+                        break;
+                    case Die.Result.Surge:
+                        result.Surges++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            //Roll all White dice
+            tempDie = new AttackWhite();
+            for (int i = 0; i < WhiteDiceAmount; i++)
+            {
+                switch (tempDie.Roll())
                 {
                     case Die.Result.Blank:
                         result.Blanks++;

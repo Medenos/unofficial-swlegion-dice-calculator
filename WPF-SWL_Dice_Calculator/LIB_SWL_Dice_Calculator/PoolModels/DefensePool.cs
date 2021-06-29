@@ -10,55 +10,60 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 {
     sealed public class DefensePool : DicePool
     {
+        public int RedDiceAmount { get; set; }
+        public int WhiteDiceAmount { get; set; }
 
-        public event EventHandler<List<Die>> DiceAddedOrRemoved;
-
-        public override List<Die> Pool
+        public override float GetAverage(bool bSurge)
         {
-            get
-            {
-                lstDiePool.Clear();
-                lstDiePool.AddRange(RedDice);
-                lstDiePool.AddRange(WhiteDice);
+            float fReturn = 0f;
 
-                return lstDiePool;
-            }
-        }
-        List<DefenseRed> RedDice = new List<DefenseRed>();
-        List<DefenseWhite> WhiteDice = new List<DefenseWhite>();
+            //Create a red die and gets its average, then adds the average times the amount to the return value
+            DefenseDie tempDie = new DefenseRed();
+            float fTempAverage = 0f;
+            fTempAverage = tempDie.GetAverage(bSurge);
 
+            fReturn += fTempAverage * RedDiceAmount;
 
-        public void AddDie(DefenseDie dieToAdd)
-        {
-            DiceAddedOrRemoved?.Invoke(this, Pool);
-        }
+            //Creates a white die and gets its average, then adds the average times the amount to the return value
+            tempDie = new DefenseWhite();
+            fTempAverage = tempDie.GetAverage(bSurge);
 
-        public void AddDice(List<DefenseDie> diceToAdd)
-        {
-            foreach (DefenseDie die in diceToAdd)
-                AddDie(die);
-            DiceAddedOrRemoved?.Invoke(this, Pool);
-        }
+            fReturn += fTempAverage * WhiteDiceAmount;
 
-        public void RemoveDie(DefenseDie dieToRemove)
-        {
-            DiceAddedOrRemoved?.Invoke(this, Pool);
-        }
-
-        public void RemoveDice(List<DefenseDie> diceToRemove)
-        {
-            foreach (DefenseDie die in diceToRemove)
-                RemoveDie(die);
-            DiceAddedOrRemoved?.Invoke(this, Pool);
+            return fReturn;
         }
 
         public override DiceResult Roll()
         {
             DefenseResult result = new DefenseResult();
 
-            foreach (DefenseDie die in Pool)
+            //Roll all red dice
+            DefenseDie tempDie = new DefenseRed();
+            for (int i = 0; i < RedDiceAmount; i++)
             {
-                switch (die.Roll())
+
+                switch (tempDie.Roll())
+                {
+                    case Die.Result.Blank:
+                        result.Blanks++;
+                        break;
+                    case Die.Result.Block:
+                        result.Blocks++;
+                        break;
+                    case Die.Result.Surge:
+                        result.Surges++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            //Roll all white dice
+            tempDie = new DefenseWhite();
+            for (int i = 0; i < WhiteDiceAmount; i++)
+            {
+
+                switch (tempDie.Roll())
                 {
                     case Die.Result.Blank:
                         result.Blanks++;

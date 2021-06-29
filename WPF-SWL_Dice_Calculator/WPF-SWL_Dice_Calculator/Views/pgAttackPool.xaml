@@ -1,4 +1,4 @@
-﻿<Page x:Class="WPF_SWL_Dice_Calculator.Views.pgAttackPool"
+﻿<Page x:Name="pgAttack" x:Class="WPF_SWL_Dice_Calculator.Views.pgAttackPool"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,27 +14,72 @@
 
     <Grid x:Name="grdMain" Margin="10,10,10,10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="261*"/>
-            <RowDefinition Height="160*"/>
-            <RowDefinition Height="59*"/>
+            <RowDefinition Height="250*"/>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
         <Rectangle x:Name="rctWallpaper" Fill="{DynamicResource Wallpaper}" Margin="126,54,126,54" Grid.RowSpan="2" Panel.ZIndex="-1"/>
         <Rectangle x:Name="rctBackDrop" Stroke="{DynamicResource BoxBorderColor}" Fill="#3FFFFFFF" Grid.RowSpan="3" Panel.ZIndex="-1"/>
-        <Grid x:Name="grdResutls" Margin="10,10,10,10">
+        <Grid x:Name="grdResults" Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="40*"/>
-                <RowDefinition Height="60*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
-            <Grid x:Name="grdHits" Grid.Row="1"/>
-            <Grid x:Name="grdCriticalHits" Grid.Column="1" Grid.Row="1"/>
-            <Grid x:Name="grdSurges" Grid.Column="2" Grid.Row="1"/>
+            <Grid x:Name="grdHits" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="grdHitAmount">
+                    <Viewbox x:Name="vbHitAmount" Margin="5,40,5,40">
+                        <TextBlock x:Name="txtHitAmount" Text="0" FontFamily="{DynamicResource MainFont}" Foreground="{DynamicResource MainFontColor}" />
+                    </Viewbox>
+                </Grid>
+                <Grid x:Name="grdHitImage" Grid.Column="1">
+                    <Viewbox x:Name="vbHitImage" Margin="0,11,0,11">
+                        <Image x:Name="imgHit" Source="/Images/FacesIcons/Hit.png" Stretch="UniformToFill" />
+                    </Viewbox>
+                </Grid>
+            </Grid>
+            <Grid x:Name="grdCriticalHits" Grid.Row="1" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="grdCriticalHitAmount">
+                    <Viewbox x:Name="vbCriticalHitAmount" Margin="5,40,5,40">
+                        <TextBlock x:Name="txtCriticalHitAmount" Text="0" FontFamily="{DynamicResource MainFont}" Foreground="{DynamicResource MainFontColor}" />
+                    </Viewbox>
+                </Grid>
+                <Grid x:Name="grdCriticalHitImage" Grid.Column="1">
+                    <Viewbox x:Name="vbCriticalHitImage" Margin="0,11,0,11">
+                        <Image x:Name="imgCriticalHit" Source="/Images/FacesIcons/Critical_hit.png" Stretch="UniformToFill" />
+                    </Viewbox>
+                </Grid>
+            </Grid>
+            <Grid x:Name="grdSurges" Grid.Column="2" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="grdSurgeAmount">
+                    <Viewbox x:Name="vbSurgeHitAmount" Margin="5,40,5,40">
+                        <TextBlock x:Name="txtSurgeHitAmount" Text="0" FontFamily="{DynamicResource MainFont}" Foreground="{DynamicResource MainFontColor}" />
+                    </Viewbox>
+                </Grid>
+                <Grid x:Name="grdSurgeHitImage" Grid.Column="1">
+                    <Viewbox x:Name="vbSurgeHitImage" Margin="0,11,0,11">
+                        <Image x:Name="imgSurgeHit" Source="/Images/FacesIcons/Attack_surge.png" Stretch="UniformToFill" />
+                    </Viewbox>
+                </Grid>
+            </Grid>
         </Grid>
-        <Grid x:Name="grdDiceSelection" Margin="10,10,10,0" Grid.Row="1">
+        <Grid x:Name="grdDiceSelection" Margin="10,10,10,10" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -43,28 +88,31 @@
             <Grid x:Name="grdWhiteAttack">
                 <Image x:Name="imgWhiteAttack" Source="/Images/DiceIcons/WhiteAttackDie.png" />
                 <Viewbox x:Name="vbWhite">
-                    <TextBox x:Name="txtWhite" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="20,20,20,20" />
+                    <TextBox x:Name="txtWhite" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="10,10,10,10" PreviewKeyDown="txtWhite_PreviewKeyDown" PreviewTextInput="txtWhite_PreviewTextInput" TextChanged="txtWhite_TextChanged" FontFamily="{DynamicResource MainFont}" />
                 </Viewbox>
             </Grid>
             <Grid x:Name="grdBlackAttack" Grid.Column="1">
                 <Image x:Name="imgBlackAttack" Grid.Column="1" Source="/Images/DiceIcons/BlackAttackDie.png"/>
                 <Viewbox x:Name="vbBlack">
-                    <TextBox x:Name="txtBlack" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="20,20,20,20" />
+                    <TextBox x:Name="txtBlack" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="10,10,10,10" TextChanged="txtBlack_TextChanged" PreviewTextInput="txtBlack_PreviewTextInput" PreviewKeyDown="txtBlack_PreviewKeyDown" FontFamily="{DynamicResource MainFont}" />
                 </Viewbox>
             </Grid>
             <Grid x:Name="grdRedAttack" Grid.Column="2">
                 <Image x:Name="imgRedAttack" Grid.Column="1" Source="/Images/DiceIcons/RedAttackDie.png"/>
                 <Viewbox x:Name="vbRed">
-                    <TextBox x:Name="txtRed" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="20,20,20,20" PreviewKeyDown="txtRed_PreviewKeyDown" />
+                    <TextBox x:Name="txtRed" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="10,10,10,10" PreviewKeyDown="txtRed_PreviewKeyDown" PreviewTextInput="txtRed_PreviewTextInput" TextChanged="txtRed_TextChanged" FontFamily="{DynamicResource MainFont}" />
                 </Viewbox>
             </Grid>
         </Grid>
         <Grid x:Name="grdButtons" Grid.Row="2">
             <Button x:Name="btnRoll" Grid.Column="1" Panel.ZIndex="2" Margin="5,10,5,10" FontFamily="Arial Black" FontSize="24" Background="{DynamicResource ButtonBackground}" BorderBrush="{DynamicResource BoxBorderColor}" Foreground="{DynamicResource HologramGradient}" BorderThickness="2,2,2,2">
                 <Viewbox>
-                    <TextBlock x:Name="txbRollButton" Text="ROLL" Foreground="{DynamicResource HologramGradient}" FontSize="12" Margin="5,2,5,2" />
+                    <TextBlock x:Name="txbRollButton" Text="ROLL" Foreground="{DynamicResource HologramGradient}" FontSize="12" Margin="5,2,5,2" FontFamily="{DynamicResource MainFont}" />
                 </Viewbox>
             </Button>
+            <Viewbox x:Name="vbSurgeChk" Margin="15,15,15,15">
+                <CheckBox x:Name="chkSurge" VerticalAlignment="Center" HorizontalAlignment="Center" Content="_COUNT SURGES" FontSize="14" FontFamily="{DynamicResource MainFont}"/>
+            </Viewbox>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
