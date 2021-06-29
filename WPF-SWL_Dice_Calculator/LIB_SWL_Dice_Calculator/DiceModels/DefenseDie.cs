@@ -10,11 +10,11 @@ namespace LIB_SWL_Dice_Calculator.DiceModels
     {
         public byte BlockFaces { get; protected set; }
 
-        public override float GetAverage(bool bCountSurges = false)
+        public override float GetAverage(bool? bCountSurges)
         {
             float fReturn = 0f;
 
-            if (bCountSurges)
+            if (bCountSurges == true)
                 fReturn =((float)BlockFaces + (float)SurgeFaces) / (float)NumberOfFaces;
             else
                 fReturn = (float)BlockFaces / (float)NumberOfFaces;

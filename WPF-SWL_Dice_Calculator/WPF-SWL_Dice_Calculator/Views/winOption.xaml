@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:WPF_SWL_Dice_Calculator.Views"
         xmlns:Models="clr-namespace:WPF_SWL_Dice_Calculator.Models" x:Name="winOptionsWindow" x:Class="WPF_SWL_Dice_Calculator.Views.winOption"
         mc:Ignorable="d"
-        Title="Options" Height="100" Width="250" WindowStyle="ToolWindow" d:DataContext="{d:DesignInstance {x:Type Models:OptionModel}}" SizeToContent="WidthAndHeight" MinWidth="250" MinHeight="100">
+        Title="Options" Height="130" Width="250" WindowStyle="ToolWindow" d:DataContext="{d:DesignInstance {x:Type Models:OptionModel}}" SizeToContent="WidthAndHeight" MinWidth="250" MinHeight="100">
     <Grid x:Name="grdOption" Margin="10,0,10,10">
         <ComboBox x:Name="cmbTheme" Margin="64,29,10,0" VerticalAlignment="Top" SelectionChanged="cmbTheme_SelectionChanged" SelectedItem="{Binding Theme}"/>
         <Label x:Name="lblTheme" Content="Theme:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkMute" Content="_Mute Sounds" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

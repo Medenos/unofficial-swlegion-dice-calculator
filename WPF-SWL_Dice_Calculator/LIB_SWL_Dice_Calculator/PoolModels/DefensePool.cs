@@ -10,10 +10,11 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 {
     sealed public class DefensePool : DicePool
     {
+        public int TotalDiceAmount { get => RedDiceAmount + WhiteDiceAmount; }
         public int RedDiceAmount { get; set; }
         public int WhiteDiceAmount { get; set; }
 
-        public override float GetAverage(bool bSurge)
+        public override float GetAverage(bool? bSurge)
         {
             float fReturn = 0f;
 

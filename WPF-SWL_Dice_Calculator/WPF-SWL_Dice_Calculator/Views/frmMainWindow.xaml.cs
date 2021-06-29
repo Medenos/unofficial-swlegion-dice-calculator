@@ -133,6 +133,7 @@ namespace WPF_SWL_Dice_Calculator
             {
                 _optWindow = new winOption(_opt);
                 _optWindow.Owner = this;
+                _optWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 _optWindow.Closed += _optWindow_Closed;
                 _optWindow.UpdateOption += _optWindow_UpdateOption;
                 _optWindow.Show();

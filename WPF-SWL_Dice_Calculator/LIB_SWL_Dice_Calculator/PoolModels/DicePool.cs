@@ -20,6 +20,6 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
         /// Calculate the average of the pool
         /// </summary>
         /// <returns></returns>
-        abstract public float GetAverage(bool bSurge);
+        abstract public float GetAverage(bool? bSurge);
     }
 }

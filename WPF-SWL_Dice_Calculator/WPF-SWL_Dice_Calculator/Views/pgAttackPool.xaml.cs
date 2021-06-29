@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LIB_SWL_Dice_Calculator.ResultModels;
 
 namespace WPF_SWL_Dice_Calculator.Views
 {
@@ -23,8 +24,10 @@ namespace WPF_SWL_Dice_Calculator.Views
     public partial class pgAttackPool : Page
     {
         AttackPool _pool = null;
+        MediaPlayer _soundPLayer = new MediaPlayer();
         const int UPPER_BOUND = 99;
         const int LOWER_BOUND = 0;
+        const string RELATIVE_SOUND_PATH = "../Audio/DiceSounds";
 
         public pgAttackPool()
         {
@@ -38,10 +41,20 @@ namespace WPF_SWL_Dice_Calculator.Views
         }
         private void txtRed_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !IsValid(((TextBox)sender).Text + e.Text);
+            e.Handled = true;
+            if (IsValid(e.Text))
+            {
+                if (txtRed.Text.Length >= 2)
+                    txtRed.Text = txtRed.Text[1] + e.Text;
+                else
+                    txtRed.Text += e.Text;
+            }
         }
         private void txtRed_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (txtRed.Text.Length > 1)
+                if (txtRed.Text.First() == '0')
+                    txtRed.Text = txtRed.Text.Remove(0, 1);
             RefreshPool();
         }
 
@@ -52,13 +65,22 @@ namespace WPF_SWL_Dice_Calculator.Views
         }
         private void txtBlack_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !IsValid(((TextBox)sender).Text + e.Text);
+            e.Handled = true;
+            if (IsValid(e.Text))
+            {
+                if (txtBlack.Text.Length >= 2)
+                    txtBlack.Text = txtBlack.Text[1] + e.Text;
+                else
+                    txtBlack.Text += e.Text;
+            }
         }
         private void txtBlack_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (txtBlack.Text.Length > 1)
+                if (txtBlack.Text.First() == '0')
+                    txtBlack.Text = txtBlack.Text.Remove(0, 1);
             RefreshPool();
         }
-
 
         private void txtWhite_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -66,10 +88,20 @@ namespace WPF_SWL_Dice_Calculator.Views
         }
         private void txtWhite_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !IsValid(((TextBox)sender).Text + e.Text);
+            e.Handled = true;
+            if (IsValid(e.Text))
+            {
+                if (txtWhite.Text.Length >= 2)
+                    txtWhite.Text = txtWhite.Text[1] + e.Text;
+                else
+                    txtWhite.Text += e.Text;
+            }
         }
         private void txtWhite_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (txtWhite.Text.Length > 1)
+                if (txtWhite.Text.First() == '0')
+                    txtWhite.Text = txtWhite.Text.Remove(0, 1);
             RefreshPool();
         }
 
@@ -134,8 +166,50 @@ namespace WPF_SWL_Dice_Calculator.Views
                 _pool.RedDiceAmount = int.Parse(txtRed.Text);
                 _pool.BlackDiceAmount = int.Parse(txtBlack.Text);
                 _pool.WhiteDiceAmount = int.Parse(txtWhite.Text);
+
+                txtAverageAmount.Text = _pool.GetAverage(chkSurge.IsChecked).ToString("0.00 hit(s)");
             }
         }
         #endregion
+
+        private void chkSurge_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPool();
+        }
+
+        private void btnRoll_Click(object sender, RoutedEventArgs e)
+        {
+            RollPool();
+        }
+
+        private void RollPool()
+        {
+            AttackResult result = (AttackResult)_pool.Roll();
+
+            txtHitAmount.Text = result.Hits.ToString();
+            txtCriticalHitAmount.Text = result.Criticals.ToString();
+            txtSurgeHitAmount.Text = result.Surges.ToString();
+            txtMissAmount.Text = result.Blanks.ToString("0 blank(s)");
+        }
+
+        private void PlayDiceSound()
+        {
+            Uri uriToPlay = null;
+
+            if (_pool.TotalDiceAmount == 1)
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_one.wav", UriKind.Relative);
+            else if (_pool.TotalDiceAmount > 1 && _pool.TotalDiceAmount <= 3)
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_aLittle.wav", UriKind.Relative);
+            else if (_pool.TotalDiceAmount > 3 && _pool.TotalDiceAmount <= 6)
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_some.wav", UriKind.Relative);
+            else if (_pool.TotalDiceAmount > 6 && _pool.TotalDiceAmount <= 10)
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_aLot.wav", UriKind.Relative);
+            else if (_pool.TotalDiceAmount > 10)
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_all.wav", UriKind.Relative);
+            else
+                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_all.wav", UriKind.Relative);
+
+
+        }
     }
 }

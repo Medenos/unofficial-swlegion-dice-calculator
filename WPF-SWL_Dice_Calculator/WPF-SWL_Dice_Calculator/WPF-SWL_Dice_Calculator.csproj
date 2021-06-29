@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Audio\DiceSounds\Attack_aLittle.wav" />
+    <None Remove="Audio\DiceSounds\Attack_all.wav" />
+    <None Remove="Audio\DiceSounds\Attack_aLot.wav" />
+    <None Remove="Audio\DiceSounds\Attack_one.wav" />
+    <None Remove="Audio\DiceSounds\Attack_some.wav" />
+    <None Remove="Audio\DiceSounds\Defense_aLittle.wav" />
+    <None Remove="Audio\DiceSounds\Defense_all.wav" />
+    <None Remove="Audio\DiceSounds\Defense_aLot.wav" />
+    <None Remove="Audio\DiceSounds\Defense_one.wav" />
+    <None Remove="Audio\DiceSounds\Defense_some.wav" />
     <None Remove="Images\BasicWallpaper.jpg" />
     <None Remove="Images\CISLogo.png" />
     <None Remove="Images\DiceIcons\BlackAttackDie.png" />
@@ -44,6 +54,36 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Audio\DiceSounds\Attack_aLittle.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Audio\DiceSounds\Attack_all.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Audio\DiceSounds\Attack_aLot.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Audio\DiceSounds\Attack_one.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Audio\DiceSounds\Attack_some.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Audio\DiceSounds\Defense_aLittle.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Audio\DiceSounds\Defense_all.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Audio\DiceSounds\Defense_aLot.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Audio\DiceSounds\Defense_one.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Audio\DiceSounds\Defense_some.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\BasicWallpaper.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

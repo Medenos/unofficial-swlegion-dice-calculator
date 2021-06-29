@@ -8,6 +8,6 @@ namespace LIB_SWL_Dice_Calculator.ResultModels
 {
     sealed public class DefenseResult : DiceResult
     {
-        public byte Blocks { get; set; }
+        public int Blocks { get; set; }
     }
 }

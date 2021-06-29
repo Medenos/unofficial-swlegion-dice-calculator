@@ -26,7 +26,7 @@ namespace LIB_SWL_Dice_Calculator.DiceModels
         /// </summary>
         /// <param name="bCountSurges">Tells if the surge should be counted as hits</param>
         /// <returns>A float value of the number of successful results</returns>
-        abstract public float GetAverage(bool bCountSurges = false);
+        abstract public float GetAverage(bool? bCountSurges);
 
         /// <summary>
         /// Maps the die face with depending on the properties

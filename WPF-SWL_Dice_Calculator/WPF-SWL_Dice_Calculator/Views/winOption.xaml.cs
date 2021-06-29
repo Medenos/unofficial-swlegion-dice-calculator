@@ -23,6 +23,8 @@ namespace WPF_SWL_Dice_Calculator.Views
 
         OptionModel _opt = new OptionModel();
         public event EventHandler<OptionModel> UpdateOption;
+        const int MAX_SOUND = 99;
+        const int MIN_SOUND = 0;
 
         public winOption(OptionModel opt)
         {
@@ -36,5 +38,6 @@ namespace WPF_SWL_Dice_Calculator.Views
         {
             UpdateOption?.Invoke(this, _opt);
         }
+
     }
 }

@@ -8,7 +8,7 @@ namespace LIB_SWL_Dice_Calculator.ResultModels
 {
     sealed public class AttackResult : DiceResult
     {
-        public byte Hits { get; set; }
-        public byte Criticals { get; set; }
+        public int Hits { get; set; }
+        public int Criticals { get; set; }
     }
 }

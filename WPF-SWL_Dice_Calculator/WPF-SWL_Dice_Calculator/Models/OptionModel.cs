@@ -13,7 +13,7 @@ namespace WPF_SWL_Dice_Calculator.Models
         const string SAVE_OPTION_PATH = "./Saves";
         const string SAVE_FILE_NAME = "/SavedOptions.json";
         public VisualThemes Theme { get; set; } = VisualThemes.Basic;
-        public float RollVolume { get; set; } = 0f;
+        public bool RollVolume { get; set; } = false;
 
         public OptionModel LoadOptions()
         {
