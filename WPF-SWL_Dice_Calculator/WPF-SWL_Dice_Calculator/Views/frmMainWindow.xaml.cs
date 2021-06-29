@@ -44,6 +44,7 @@ namespace WPF_SWL_Dice_Calculator
         }
         private void winMainWindow_ContentRendered(object sender, EventArgs e)
         {
+            LoadPagesContent();
             ReloadAll();
         }
 
@@ -121,7 +122,6 @@ namespace WPF_SWL_Dice_Calculator
         private void ReloadAll()
         {
             _opt = _opt.LoadOptions();
-            LoadPagesContent();
             LoadTheme();
             InitializeTabsWidth();
             SetTabColors();

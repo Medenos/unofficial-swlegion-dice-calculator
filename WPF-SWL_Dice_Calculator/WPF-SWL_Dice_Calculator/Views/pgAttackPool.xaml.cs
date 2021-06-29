@@ -25,6 +25,7 @@ namespace WPF_SWL_Dice_Calculator.Views
     {
         AttackPool _pool = null;
         MediaPlayer _soundPLayer = new MediaPlayer();
+        bool _isPlaying = false;
         const int UPPER_BOUND = 99;
         const int LOWER_BOUND = 0;
         const string RELATIVE_SOUND_PATH = "../Audio/DiceSounds";
@@ -32,7 +33,14 @@ namespace WPF_SWL_Dice_Calculator.Views
         public pgAttackPool()
         {
             InitializeComponent();
+            _soundPLayer.MediaEnded += _soundPLayer_MediaEnded;
             _pool = new AttackPool();
+        }
+
+        private void _soundPLayer_MediaEnded(object sender, EventArgs e)
+        {
+            _isPlaying = false;
+            _soundPLayer.Stop();
         }
 
         private void txtRed_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -179,6 +187,7 @@ namespace WPF_SWL_Dice_Calculator.Views
 
         private void btnRoll_Click(object sender, RoutedEventArgs e)
         {
+            PlayDiceSound();
             RollPool();
         }
 
@@ -195,6 +204,7 @@ namespace WPF_SWL_Dice_Calculator.Views
         private void PlayDiceSound()
         {
             Uri uriToPlay = null;
+            bool bPlay = true;
 
             if (_pool.TotalDiceAmount == 1)
                 uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_one.wav", UriKind.Relative);
@@ -207,9 +217,13 @@ namespace WPF_SWL_Dice_Calculator.Views
             else if (_pool.TotalDiceAmount > 10)
                 uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_all.wav", UriKind.Relative);
             else
-                uriToPlay = new Uri(RELATIVE_SOUND_PATH + "/Attack_all.wav", UriKind.Relative);
+                bPlay = false;
 
-
+            if (!_isPlaying && bPlay)
+            {
+                _soundPLayer.Open(uriToPlay);
+                _soundPLayer.Play();
+            }
         }
     }
 }
