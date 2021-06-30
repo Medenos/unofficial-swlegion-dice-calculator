@@ -34,6 +34,26 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
             return fReturn;
         }
 
+        public override DiceResult GetAverageResult()
+        {
+            DefenseResult resultReturn = new DefenseResult();
+
+            DefenseDie tempDie = new DefenseRed();
+
+            resultReturn.Blocks += ((DefenseResult)(tempDie.GetAverageResult())).Blocks * RedDiceAmount;
+            resultReturn.Surges += ((DefenseResult)(tempDie.GetAverageResult())).Surges * RedDiceAmount;
+            resultReturn.Blanks += ((DefenseResult)(tempDie.GetAverageResult())).Blanks * RedDiceAmount;
+
+
+            tempDie = new DefenseWhite();
+
+            resultReturn.Blocks += ((DefenseResult)(tempDie.GetAverageResult())).Blocks * WhiteDiceAmount;
+            resultReturn.Surges += ((DefenseResult)(tempDie.GetAverageResult())).Surges * WhiteDiceAmount;
+            resultReturn.Blanks += ((DefenseResult)(tempDie.GetAverageResult())).Blanks * WhiteDiceAmount;
+
+            return resultReturn;
+        }
+
         public override DiceResult Roll()
         {
             DefenseResult result = new DefenseResult();

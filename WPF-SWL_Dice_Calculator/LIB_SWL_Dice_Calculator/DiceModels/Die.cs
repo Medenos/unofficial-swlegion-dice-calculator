@@ -1,4 +1,5 @@
 ﻿using LIB_SWL_Dice_Calculator.Extensions;
+using LIB_SWL_Dice_Calculator.ResultModels;
 using System;
 
 namespace LIB_SWL_Dice_Calculator.DiceModels
@@ -27,6 +28,8 @@ namespace LIB_SWL_Dice_Calculator.DiceModels
         /// <param name="bCountSurges">Tells if the surge should be counted as hits</param>
         /// <returns>A float value of the number of successful results</returns>
         abstract public float GetAverage(bool? bCountSurges);
+
+        abstract public DiceResult GetAverageResult();
 
         /// <summary>
         /// Maps the die face with depending on the properties

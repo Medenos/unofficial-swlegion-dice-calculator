@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LIB_SWL_Dice_Calculator.ResultModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,16 @@ namespace LIB_SWL_Dice_Calculator.DiceModels
                 fReturn = (float)BlockFaces / (float)NumberOfFaces;
 
             return fReturn;
+        }
+
+        public override DiceResult GetAverageResult()
+        {
+            return new DefenseResult()
+            {
+                Blanks = (float)((float)BlankFaces / (float)DieMapping.Length),
+                Blocks = (float)((float)BlockFaces / (float)DieMapping.Length),
+                Surges = (float)((float)SurgeFaces / (float)DieMapping.Length)
+            };
         }
 
         protected override void MapDice()

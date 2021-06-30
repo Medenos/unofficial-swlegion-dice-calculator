@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LIB_SWL_Dice_Calculator.ResultModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,17 @@ namespace LIB_SWL_Dice_Calculator.DiceModels
                 fReturn = ((float)CriticalFaces + (float)HitFaces) / (float)NumberOfFaces;
 
             return fReturn;
+        }
+
+        public override DiceResult GetAverageResult()
+        {
+            return new AttackResult()
+            {
+                Blanks = (float)((float)BlankFaces/ (float)DieMapping.Length),
+                Criticals = (float)((float)CriticalFaces / (float)DieMapping.Length),
+                Hits = (float)((float)HitFaces / (float)DieMapping.Length),
+                Surges = (float)((float)SurgeFaces / (float)DieMapping.Length)
+            };
         }
 
         protected override void MapDice()

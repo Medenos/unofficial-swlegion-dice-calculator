@@ -21,5 +21,7 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
         /// </summary>
         /// <returns></returns>
         abstract public float GetAverage(bool? bSurge);
+
+        abstract public DiceResult GetAverageResult();
     }
 }
