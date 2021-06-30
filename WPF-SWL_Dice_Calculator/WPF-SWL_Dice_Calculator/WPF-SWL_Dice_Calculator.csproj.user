@@ -13,9 +13,6 @@
     <Compile Update="Views\pgCombatSimulation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\pgKeywordMenu.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Resource Update="Themes\EmpireTheme.xaml">
@@ -31,9 +28,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\pgCombatSimulation.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\pgKeywordMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

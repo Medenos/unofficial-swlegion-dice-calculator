@@ -10,11 +10,14 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 {
     sealed public class AttackPool : DicePool
     {
+        #region Dice
         public int TotalDiceAmount { get => RedDiceAmount + BlackDiceAmount + WhiteDiceAmount; }
         public int RedDiceAmount { get; set; }
         public int BlackDiceAmount { get; set; }
         public int WhiteDiceAmount { get; set; }
         public int CriticalAmount { get; set; }
+        #endregion
+
 
         public override float GetAverage(bool? bSurge)
         {

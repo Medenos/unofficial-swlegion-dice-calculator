@@ -12,15 +12,49 @@
     </Page.Resources>
 
     <Grid x:Name="grdMain" Margin="10,10,10,10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="85*"/>
-            <RowDefinition Height="40*"/>
-        </Grid.RowDefinitions>
-        <Rectangle x:Name="rctWallpaper" Fill="{DynamicResource Wallpaper}" Margin="126,54,126,54" Grid.RowSpan="4" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="rctBackDrop" Stroke="{DynamicResource BoxBorderColor}" Fill="#3FFFFFFF" Grid.RowSpan="5" Panel.ZIndex="-1"/>
-        <Label Content="WIP" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" FontSize="72"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle x:Name="rctWallpaper" Fill="{DynamicResource Wallpaper}" Margin="126,54,126,54" Panel.ZIndex="-1" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="rctBackDrop" Stroke="{DynamicResource BoxBorderColor}" Fill="#3FFFFFFF" Panel.ZIndex="-1" Grid.ColumnSpan="2"/>
+
+        <Label x:Name="lblWIP" Content="WIP" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="72" FontFamily="{DynamicResource MainFont}"/>
+
+        <!--<Grid x:Name="grdAttacker" Margin="5,5,5,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="grdDiceSelection" Margin="10,10,10,10" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="grdWhiteAttack">
+                    <Image x:Name="imgWhiteAttack" Source="/Images/DiceIcons/WhiteAttackDie.png" />
+                    <Viewbox x:Name="vbWhite">
+                        <TextBox x:Name="txtWhite" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="10,10,10,10" PreviewKeyDown="txtWhite_PreviewKeyDown" PreviewTextInput="txtWhite_PreviewTextInput" TextChanged="txtWhite_TextChanged" FontFamily="{DynamicResource MainFont}" MaxLength="2" />
+                    </Viewbox>
+                </Grid>
+                <Grid x:Name="grdBlackAttack" Grid.Column="1">
+                    <Image x:Name="imgBlackAttack" Grid.Column="1" Source="/Images/DiceIcons/BlackAttackDie.png"/>
+                    <Viewbox x:Name="vbBlack">
+                        <TextBox x:Name="txtBlack" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="10,10,10,10" TextChanged="txtBlack_TextChanged" PreviewTextInput="txtBlack_PreviewTextInput" PreviewKeyDown="txtBlack_PreviewKeyDown" FontFamily="{DynamicResource MainFont}" MaxLength="2" />
+                    </Viewbox>
+                </Grid>
+                <Grid x:Name="grdRedAttack" Grid.Column="2">
+                    <Image x:Name="imgRedAttack" Grid.Column="1" Source="/Images/DiceIcons/RedAttackDie.png"/>
+                    <Viewbox x:Name="vbRed">
+                        <TextBox x:Name="txtRed" SelectionTextBrush="{x:Null}" Foreground="{DynamicResource HologramGradient}" BorderBrush="{x:Null}" Background="{x:Null}" Text="0" Margin="10,10,10,10" PreviewTextInput="txtRed_PreviewTextInput" TextChanged="txtRed_TextChanged" FontFamily="{DynamicResource MainFont}" MaxLength="2" PreviewKeyDown="txtRed_PreviewKeyDown" />
+                    </Viewbox>
+                </Grid>
+            </Grid>
+            <Grid x:Name="grdAttackToken" Grid.Row="1"/>
+        </Grid>
+        <Grid x:Name="grdDefender" Grid.Column="1" Margin="5,5,5,5"/>-->
     </Grid>
 </Page>
