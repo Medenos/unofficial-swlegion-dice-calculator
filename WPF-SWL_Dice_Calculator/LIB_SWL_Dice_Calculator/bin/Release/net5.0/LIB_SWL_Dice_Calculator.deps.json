@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "LIB_SWL_Dice_Calculator/1.0.0": {
+        "runtime": {
+          "LIB_SWL_Dice_Calculator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LIB_SWL_Dice_Calculator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

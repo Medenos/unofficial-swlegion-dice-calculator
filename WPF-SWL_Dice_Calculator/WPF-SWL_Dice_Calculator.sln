@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-SWL_Dice_Calculator", "WPF-SWL_Dice_Calculator\WPF-SWL_Dice_Calculator.csproj", "{938432E5-C9D0-4436-9A6F-342C7FBB74F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF-SWL_Dice_Calculator", "WPF-SWL_Dice_Calculator\WPF-SWL_Dice_Calculator.csproj", "{938432E5-C9D0-4436-9A6F-342C7FBB74F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIB_SWL_Dice_Calculator", "LIB_SWL_Dice_Calculator\LIB_SWL_Dice_Calculator.csproj", "{D34E7837-ACFC-4DF6-8BCF-A494FD6501CF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugAndTest", "DebugAndTest\DebugAndTest.csproj", "{BBABD7F0-8210-45C2-ADCE-EE9DAE8CE2D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIB_SWL_Dice_Calculator", "LIB_SWL_Dice_Calculator\LIB_SWL_Dice_Calculator.csproj", "{D34E7837-ACFC-4DF6-8BCF-A494FD6501CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{D34E7837-ACFC-4DF6-8BCF-A494FD6501CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D34E7837-ACFC-4DF6-8BCF-A494FD6501CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D34E7837-ACFC-4DF6-8BCF-A494FD6501CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBABD7F0-8210-45C2-ADCE-EE9DAE8CE2D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBABD7F0-8210-45C2-ADCE-EE9DAE8CE2D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBABD7F0-8210-45C2-ADCE-EE9DAE8CE2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBABD7F0-8210-45C2-ADCE-EE9DAE8CE2D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
