@@ -10,14 +10,16 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 {
     sealed public class AttackPool : DicePool
     {
-        public int TotalDiceAmount { get => RedDiceAmount + BlackDiceAmount + WhiteDiceAmount;}
+        public int TotalDiceAmount { get => RedDiceAmount + BlackDiceAmount + WhiteDiceAmount; }
         public int RedDiceAmount { get; set; }
         public int BlackDiceAmount { get; set; }
         public int WhiteDiceAmount { get; set; }
+        public int CriticalAmount { get; set; }
 
         public override float GetAverage(bool? bSurge)
         {
             float fReturn = 0f;
+
 
             //Create a red die and gets its average, then adds the average times the amount to the return value
             AttackDie tempDie = new AttackRed();
@@ -38,6 +40,16 @@ namespace LIB_SWL_Dice_Calculator.PoolModels
 
             fReturn += fTempAverage * WhiteDiceAmount;
 
+            if (bSurge != true && CriticalAmount > 0)
+            {
+                if (CriticalAmount <= TotalDiceAmount)
+                    for (int i = 0; i < CriticalAmount; i++)
+                        fReturn += (float)((float)1 / (float)8);
+
+                else
+                    for (int i = 0; i < TotalDiceAmount; i++)
+                        fReturn += (float)((float)1 / (float)8);
+            }
             return fReturn;
         }
 

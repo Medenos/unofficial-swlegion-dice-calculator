@@ -177,11 +177,13 @@ namespace WPF_SWL_Dice_Calculator.Views
                     txtBlack.Text = "0".Trim();
                 if (txtWhite.Text.Trim() == "")
                     txtWhite.Text = "0".Trim();
-
+                if (txtCritValue.Text.Trim() == "")
+                    txtCritValue.Text = "0".Trim();
 
                 _pool.RedDiceAmount = int.Parse(txtRed.Text);
                 _pool.BlackDiceAmount = int.Parse(txtBlack.Text);
                 _pool.WhiteDiceAmount = int.Parse(txtWhite.Text);
+                _pool.CriticalAmount = int.Parse(txtCritValue.Text);
 
                 txtAverageAmount.Text = _pool.GetAverage(chkSurge.IsChecked).ToString("0.00 hit(s)");
             }
@@ -239,6 +241,34 @@ namespace WPF_SWL_Dice_Calculator.Views
                 _soundPLayer.Open(uriToPlay);
                 _soundPLayer.Play();
             }
+        }
+
+        private void txtCritValue_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            txtCritValue.Text = CheckTextBound(txtCritValue.Text, e);
+        }
+
+        private void txtCritValue_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = true;
+            if (IsValid(e.Text))
+            {
+                if (txtCritValue.Text.Length >= 2)
+                    txtCritValue.Text = txtCritValue.Text[1] + e.Text;
+                else
+                    txtCritValue.Text += e.Text;
+            }
+        }
+
+        private void txtCritValue_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtCritValue.Text.Length > 1)
+                if (txtCritValue.Text.First() == '0')
+                    txtCritValue.Text = txtCritValue.Text.Remove(0, 1);
+            if (txtCritValue.Text == "" || txtCritValue.Text == null)
+                txtCritValue.Text = "0";
+
+            RefreshPool();
         }
     }
 }

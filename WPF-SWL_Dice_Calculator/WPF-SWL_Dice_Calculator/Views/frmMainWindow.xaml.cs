@@ -25,7 +25,7 @@ namespace WPF_SWL_Dice_Calculator
         OptionModel _opt = new OptionModel();
         winOption _optWindow = null;
         pgAttackPool _pgAtt = null;
-        pgDefensePool _pgDef = null;
+        pgCombatSimulation _pgSim = null;
 
         public MainWindow()
         {
@@ -81,10 +81,10 @@ namespace WPF_SWL_Dice_Calculator
         {
 
             _pgAtt = new pgAttackPool();
-            _pgDef = new pgDefensePool();
+            _pgSim = new pgCombatSimulation();
 
             frmAttack.Content = _pgAtt;
-            frmDefense.Content = _pgDef;
+            frmDefense.Content = _pgSim;
         }
 
         private void LoadTheme()
@@ -116,7 +116,7 @@ namespace WPF_SWL_Dice_Calculator
         {
             Resources.Source = uri;
             _pgAtt.Resources.Source = uri;
-            _pgDef.Resources.Source = uri;
+            _pgSim.Resources.Source = uri;
         }
 
         private void ReloadAll()

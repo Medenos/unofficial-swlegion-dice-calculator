@@ -18,9 +18,9 @@ namespace WPF_SWL_Dice_Calculator.Views
     /// <summary>
     /// Interaction logic for pgDefensePool.xaml
     /// </summary>
-    public partial class pgDefensePool : Page
+    public partial class pgCombatSimulation : Page
     {
-        public pgDefensePool()
+        public pgCombatSimulation()
         {
             InitializeComponent();
         }

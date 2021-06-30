@@ -10,7 +10,10 @@
     <Compile Update="Views\pgAttackPool.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\pgDefensePool.xaml.cs">
+    <Compile Update="Views\pgCombatSimulation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\pgKeywordMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -27,7 +30,10 @@
     <Page Update="Views\pgAttackPool.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\pgDefensePool.xaml">
+    <Page Update="Views\pgCombatSimulation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\pgKeywordMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

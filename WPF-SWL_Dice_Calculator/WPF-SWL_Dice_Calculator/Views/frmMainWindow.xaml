@@ -12,7 +12,12 @@
     </Window.Resources>
 
     <Grid x:Name="grdMain" Background="{DynamicResource AttackPoolBrush}">
-        <Button x:Name="btnSettings" Content="_SETTINGS" Margin="10,0,0,10" Panel.ZIndex="1" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="110" Click="btnSettings_Click" Background="{DynamicResource ButtonBackground}" BorderBrush="{DynamicResource ButtonBorder}" FontFamily="{DynamicResource MainFont}"/>
+        <Button x:Name="btnSettings" Content="_SETTINGS" Margin="10,0,0,10" Panel.ZIndex="1" Height="25" 
+                VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="110" Click="btnSettings_Click"
+                Background="{DynamicResource ButtonBackground}" BorderBrush="{DynamicResource ButtonBorder}" 
+                FontFamily="{DynamicResource MainFont}"/>
+
+        
         <TabControl x:Name="tabsViews" BorderBrush="{x:Null}" SelectionChanged="tabsViews_SelectionChanged" Margin="-2,-2,-2,-2" Background="{DynamicResource AttackPoolGradient}">
             <TabItem x:Name="tabAttackPool" Height="40">
                 <TabItem.Template>
@@ -60,7 +65,7 @@
                     <ControlTemplate TargetType="{x:Type TabItem}">
                         <Grid>
                             <Viewbox Panel.ZIndex="1">
-                                <TextBlock x:Name="txtbDefenseHeader" Text="DEFENSE POOL" Panel.ZIndex="1" Margin="5,5,5,5" FontFamily="{DynamicResource MainFont}" />
+                                <TextBlock x:Name="txtbDefenseHeader" Text="COMBAT SIMULATION" Panel.ZIndex="1" Margin="5,5,5,5" FontFamily="{DynamicResource MainFont}" />
                             </Viewbox>
                             <Border 
                                 Name="Border"
