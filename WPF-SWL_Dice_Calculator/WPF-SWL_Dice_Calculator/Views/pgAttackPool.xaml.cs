@@ -270,5 +270,21 @@ namespace WPF_SWL_Dice_Calculator.Views
 
             RefreshPool();
         }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            Reset();
+        }
+
+        private void Reset() 
+        {
+            txtRed.Text = "0";
+            txtBlack.Text = "0";
+            txtWhite.Text = "0";
+
+            txtCritValue.Text = "0";
+            chkSurge.IsChecked = false;
+            RefreshPool();
+        }
     }
 }
